@@ -1,6 +1,7 @@
 import { Link, Route, useRouteMatch } from "react-router-dom";
 import WizardPage from "./characterClassComponents/WizardPage";
 import BarbarianPage from "./characterClassComponents/BarbarianPage";
+import ClassNotFoundPage from "./characterClassComponents/ClassNotFoundPage";
 
 function CharacterClassMain(){
     const {url, path} = useRouteMatch();
@@ -22,6 +23,9 @@ function CharacterClassMain(){
             </Route>
             <Route path={`${path}/barbarians`}>
                 <BarbarianPage />
+            </Route>
+            <Route path={`${path}/:nonexistentClass`}>
+                <ClassNotFoundPage />
             </Route>
         </div>
     )
