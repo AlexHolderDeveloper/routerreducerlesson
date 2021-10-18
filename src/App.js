@@ -8,6 +8,8 @@ import CharacterClassMain from './components/characterClassMain';
 import DiceRollMain from './components/diceRollMain';
 import DungeonMasterMain from './components/dungeonMasterMain';
 
+import ProtectedRoute from './components/ProtectedRoute';
+
 function App() {
   return (
     <div className="App">
@@ -45,9 +47,11 @@ function App() {
         <Route path="/dicerolls">
           <DiceRollMain />
         </Route>
-        <Route path="/gameplanning">
+        <ProtectedRoute component={DungeonMasterMain} path="/gameplanning" /> 
+
+        {/* <Route path="/gameplanning">
           <DungeonMasterMain />
-        </Route>
+        </Route> */}
         {/* Not exact path still shows at the end unless you use a Switch!*/}
         {/* <Route path="/">
           <WelcomePage />
