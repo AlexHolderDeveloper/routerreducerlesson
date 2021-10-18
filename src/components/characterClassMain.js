@@ -1,4 +1,4 @@
-import { Link, Route, useRouteMatch } from "react-router-dom";
+import { Link, Route, useRouteMatch, Switch } from "react-router-dom";
 import WizardPage from "./characterClassComponents/WizardPage";
 import BarbarianPage from "./characterClassComponents/BarbarianPage";
 import ClassNotFoundPage from "./characterClassComponents/ClassNotFoundPage";
@@ -18,15 +18,17 @@ function CharacterClassMain(){
                 </li>
             </ul>
 
-            <Route path={`${path}/wizards`}>
-                <WizardPage />
-            </Route>
-            <Route path={`${path}/barbarians`}>
-                <BarbarianPage />
-            </Route>
-            <Route path={`${path}/:nonexistentClass`}>
-                <ClassNotFoundPage />
-            </Route>
+            <Switch>
+                <Route path={`${path}/wizards`}>
+                    <WizardPage />
+                </Route>
+                <Route path={`${path}/barbarians`}>
+                    <BarbarianPage />
+                </Route>
+                <Route path={`${path}/:nonexistentClass`}>
+                    <ClassNotFoundPage />
+                </Route>
+            </Switch>
         </div>
     )
 }
