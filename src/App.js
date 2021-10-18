@@ -1,23 +1,58 @@
 import logo from './logo.svg';
 import './App.css';
 
+import {Link, Route, Switch} from 'react-router-dom';
+
+import WelcomePage from './components/welcomepage';
+import CharacterClassMain from './components/characterClassMain';
+import DiceRollMain from './components/diceRollMain';
+import DungeonMasterMain from './components/dungeonMasterMain';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <a href="google.com">GO to google</a>
+      <Link to="/google.com">Go to google</Link> */}
+      <h1>Dungeons & Dragons</h1>
+      <nav className="navbar">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/characterclasses">Class Info</Link>
+          </li>
+          <li>
+            <Link to="/dicerolls">Dice Roller</Link>
+          </li>
+          <li>
+            <Link to="/gameplanning">DM Secret Area</Link>
+          </li>
+        </ul>
+
+      </nav>
+
+      {/* <Route exact path="/">
+        <WelcomePage />
+      </Route> */}
+      <Switch>
+        <Route exact path="/">
+          <WelcomePage />
+        </Route>
+        <Route path="/characterclasses">
+          <CharacterClassMain />
+        </Route>
+        <Route path="/dicerolls">
+          <DiceRollMain />
+        </Route>
+        <Route path="/gameplanning">
+          <DungeonMasterMain />
+        </Route>
+        {/* Not exact path still shows at the end */}
+        {/* <Route path="/">
+          <WelcomePage />
+        </Route> */}
+      </Switch>
     </div>
   );
 }
