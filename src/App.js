@@ -48,7 +48,7 @@ function App() {
         <Route path="/gameplanning">
           <DungeonMasterMain />
         </Route>
-        {/* Not exact path still shows at the end */}
+        {/* Not exact path still shows at the end unless you use a Switch!*/}
         {/* <Route path="/">
           <WelcomePage />
         </Route> */}
