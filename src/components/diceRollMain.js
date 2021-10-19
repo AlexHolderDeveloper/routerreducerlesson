@@ -22,6 +22,10 @@ function diceRollSettingsReducer(state, action){
             return {
                 ...state, diceSize: newDiceSize
             }
+        case "reset":
+            return initialState;
+        case "addResult":
+            return {...state, diceRollResult: rollDice(state.diceSize)}
         default:
             throw new Error("Incorrect action type was used.");
             // return {...state};
@@ -81,13 +85,16 @@ function DiceRollMain(){
 
             <button onClick={() => dispatch({type:"increment"})}>Increase dice size by 1</button>
             <button onClick={() => dispatch({type:"decrement"})}>Decrease dice size by 1</button>
-            
-            <button onClick={() => setDiceRollResult(rollDice(state.diceSize))}>Roll Dice</button>
+            <button onClick={() => dispatch({type:"reset"})}>Reset dice settings & wipe dice history</button>
 
-            {diceRollResult > 0 && 
+            {/* <button onClick={() => setDiceRollResult(rollDice(state.diceSize))}>Roll Dice</button> */}
+            <button onClick={() => dispatch({type:"addResult"})}>Roll Dice</button>
+
+
+            {state.diceRollResult > 0 && 
                 <div>
                     <h3>Dice Result</h3>
-                    <h1>{diceRollResult}</h1>
+                    <h1>{state.diceRollResult}</h1>
                 </div>
             }
             
